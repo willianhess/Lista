@@ -1,1 +1,81 @@
 # Lista
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Mais Gay 3.0</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .rainbow {
+            font-size: 2rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .comment {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="text-container" class="rainbow"></div>
+    <div id="comment-container" class="comment"></div>
+
+    <script>
+        const lista = [
+            { text: "Toma milkshake de morango", comment: "Humm, ó, é muito cremoso!" },
+            { text: "Churrasco em grelha", comment: "Não gosta de espetar uma carne com espetos, é muito perigoso!" },
+            { text: "Gosta de carro elétrico", comment: "É um bantulão energizado!" },
+            { text: "Agora de Heineken", comment: "Tá evoluindo pra Skol Bitz, o putaço docinho docinho!" },
+            { text: "Não tomem copo de plástico e nem divide com o moço", comment: "Um gayexaço egoísta!" },
+            { text: "Já tinha tudo na doberal", comment: "Agora adete de bike elétrica e patins elétricos com assento, pra não machucar os glúteos!" },
+            { text: "Tem Jeep Renegade", comment: "Chama marido de aluguel pra botar lâmpadas, só uma lâmpada não rola, tem que ser mais, pra valer a pena!" },
+            { text: "Usa chinelo nuvem com meia", comment: "Esse é o mestre dos viados!" },
+            { text: "Toma Campari", comment: "Vai tolo no último, meu Deus do céu!" },
+            { text: "Não come carne", comment: "Sinto alheia, todo delicado, hein futão, meu Deus do céu!" },
+            { text: "Usa coque samurai", comment: "É um viado estiloso, não mexam nos meus cabelos sedosos!" },
+            { text: "Faz truende com dancinha no TikTok", comment: "Olha aí ó, olha aí, nunca vi, mas além de viado, esse tem tempo, né?" },
+            { text: "Abrevia nome de cidade", comment: "Exemplo: Florianópolis vira Floripa, bichona bem vadia até pra falar!" },
+            { text: "Se ofendeu com o tal do sushizinho", comment: "Ao invés do churrasco, que que é isso, hein?" },
+            { text: "Do copo foi pra garrafa Stanley", comment: "Bem goloso, bem golosinho!" },
+            { text: "Adora uma frutinha sofisticada", comment: "Minha pitaia é picada, moze, por favor, esse é um gay fit!" },
+            { text: "Usa Mizuno e doze mola", comment: "Esse vai tolo é style!" },
+            { text: "Usa óculos Juliette", comment: "Esse se entrega geral, o cudaço no último!" },
+            { text: "Se entrega quando leva susto", comment: "Os gritinhos do machinho, o viadão apavorado!" },
+            { text: "Bom batime", comment: "A 4.0 já está a caminho, aceita que doem menos, atingindo mais de 3, é viadão mega hipersônico do planeta dos rosados!" }
+        ];
+        
+        let index = 0;
+        const textContainer = document.getElementById("text-container");
+        const commentContainer = document.getElementById("comment-container");
+        
+        function applyRainbowEffect(text) {
+            return text.split('').map((char, i) => {
+                const hue = (i * 30) % 360;
+                return `<span style="color: hsl(${hue}, 100%, 70%)">${char}</span>`;
+            }).join('');
+        }
+        
+        function showNextItem() {
+            textContainer.innerHTML = applyRainbowEffect(lista[index].text);
+            commentContainer.innerHTML = lista[index].comment;
+            index = (index + 1) % lista.length;
+        }
+        
+        showNextItem();
+        setInterval(showNextItem, 3000);
+    </script>
+</body>
+</html>
